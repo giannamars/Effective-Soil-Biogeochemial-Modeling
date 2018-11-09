@@ -29,9 +29,6 @@ model_net.set_var_ic('x_4', 'rB0')
 model_net.set_var_ic('x_5', 'rBP0')
 model_net.set_var_ic('x_6', 'rF0')
 #
-#model_net.add_parameter('Lit0', 0.1)
-#model_net.set_var_ic('x_12', 'Lit0')
-#
 model_net.add_species('co2_tot', 'compartmentOne')
 model_net.add_assignment_rule('co2_tot', 'x_11 + x_12*(1-YLHiq*(((cL + (t/(t**2 + bL))**3) - cL)/(cL + (1/2*sqrt(bL))**3)) - YLLoq*(1-(((cL + (t/(t**2 + bL))**3) - cL)/(cL + (1/2*sqrt(bL))**3))))*(cL + (t/(t**2 + bL))**3)')
 
@@ -55,11 +52,7 @@ m = Model([PECCAT_experiment.expt], [model_net])
 p0= m.get_params().copy()
 print(len(p0))
 p0 = Utility.load('popt0.model.bpkl')
-#p0[0]=1.2
-#p0[1]=1.2
-#p0[2]=1.2
-#p0[10]=30.0
-#p0[11]=30.0
+
 ## Set prior ranges from value/prior_range to value*prior_range
 
 prior_range = 100
@@ -119,97 +112,11 @@ Utility.save(popt, 'popt00.model.bpkl')
 print('Calculating Hessian')
 j = m.jacobian_log_params_sens(np.log(popt))
 jtj = np.dot(np.transpose(j),j)
-np.savetxt('hessian0.dat', jtj)
-e,v = Utility.eig(jtj)
-e = scipy.real(e)
-#Plotting.figure(0)
-#l = Plotting.plot_eigval_spectrum(e, offset=0.15, widths=0.7, lw=2)
-#
+
 print('Generating ensemble')
-ens_data, costs, ratio = Ensembles.ensemble_log_params(m, popt, jtj, steps=30000)
+ens_data, costs, ratio = Ensembles.ensemble_log_params(m, popt, jtj, steps=100000,seeds=(113,207))
 #
-
-
 ens_PCA = Ensembles.PCA_eig_log_params(ens_data)
 eigsp = 1/ens_PCA[0]**2
 np.savetxt('hessian.dat', eigsp)
-#e,v = Utility.eig(ens_PCA[0])
-#e = scipy.real(e)
 
-Plotting.figure(1)
-l = Plotting.plot_eigval_spectrum(eigsp)
-plt.savefig('pcaspec.png')
-
-
-#ens_data = np.array(ens_data)
-#Utility.save(ens_data, 'model0.ens_data.bpkl')
-#costs = np.array(costs)
-#Utility.save(costs, 'model0.costs.bpkl')
-
-
-
-## Plotting
-
-#Plotting.figure(1)
-#Plotting.plot_model_results(m, data_to_plot = 'cBtot')
-#Plotting.figure(2)
-##Plotting.plot_model_results(m, data_to_plot = 'x_2')
-#Plotting.figure(3)
-#Plotting.plot_model_results(m, data_to_plot = 'x_3')
-#Plotting.figure(4)
-#Plotting.plot_model_results(m, data_to_plot = 'doc')
-#Plotting.figure(5)
-#Plotting.plot_model_results(m, data_to_plot = 'x_8')
-#Plotting.figure(6)
-#Plotting.plot_model_results(m, data_to_plot = 'toc')
-#Plotting.figure(7)
-#Plotting.plot_model_results(m, data_to_plot = 'co2_tot')
-#Plotting.figure(8)
-#Plotting.plot_model_results(m, data_to_plot = 'cmic')
-
-
-
-#traj = Dynamics.integrate(model_net, [0, 25],rtol=1e-9, params=popt, fill_traj=True)
-
-#Plotting.figure(9)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_1'))
-
-#Plotting.figure(10)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_2'))
-
-#Plotting.figure(11)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_3'))
-
-#Plotting.figure(12)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_4'))
-
-#Plotting.figure(13)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_5'))
-
-
-#Plotting.figure(14)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_6'))
-
-
-#Plotting.figure(15)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_7'))
-
-
-#Plotting.figure(16)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_8'))
-
-#Plotting.figure(17)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_9'))
-
-#Plotting.figure(18)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_10'))
-
-#Plotting.figure(19)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_11'))
-
-#Plotting.figure(20)
-#plt.plot(traj.get_times(), traj.get_var_traj('x_12'))
-
-
-
-plt.show()
