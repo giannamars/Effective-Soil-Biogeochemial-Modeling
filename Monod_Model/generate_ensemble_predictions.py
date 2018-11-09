@@ -19,7 +19,7 @@ Network.full_speed()
 ens_data, costs, ratio = Ensembles.ensemble_log_params(monod_model.m,
                                                        monod_model.popt,
                                                        hess=monod_model.jtj,
-                                                       steps=100,
+                                                       steps=10000,
                                                        seeds=(113,207),
                                                        recalc_hess_alg=False)
 
