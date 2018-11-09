@@ -50,6 +50,10 @@ for model_ii, (model,temp) in enumerate(Common.model_list):
     l = Plotting.plot_eigval_spectrum(e/max(e), offset=0.15+model_ii,ax=ax, widths=0.7, lw = 1.0)
 
 
+e = np.loadtxt(os.path.join('PECCATPCA', 'hessian.dat'))
+e = scipy.real(e)
+l = Plotting.plot_eigval_spectrum(e/max(e), offset=0.15+5, ax=ax, widths=0.7, lw=1.0)
+
 
 for ii in range(1, model_ii+1):
     ax.plot([ii, ii], [1e-24, 2], '-', lw=0.5, color='black')
