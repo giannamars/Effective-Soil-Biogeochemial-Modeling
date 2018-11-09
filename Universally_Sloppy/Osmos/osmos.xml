@@ -1,0 +1,1107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="Model_generated_by_BIOCHAM">
+    <listOfCompartments>
+      <compartment id="compartmentOne" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="x__1" name="x__1" compartment="compartmentOne" initialConcentration="1000" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="x__2" name="x__2" compartment="compartmentOne" initialConcentration="50" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="x__3" name="x__3" compartment="compartmentOne" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="x__4" name="x__4" compartment="compartmentOne" initialConcentration="100" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="x__5" name="x__5" compartment="compartmentOne" initialConcentration="10" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="b" name="b" value="4.9" constant="true"/>
+      <parameter id="C_E_0" name="C_E_0" value="1" constant="true"/>
+      <parameter id="D_D_0" name="D_D_0" value="8.1e-10" constant="true"/>
+      <parameter id="delta" name="delta" value="0.0001" constant="true"/>
+      <parameter id="e" name="e" value="0.5" constant="true"/>
+      <parameter id="gamma" name="gamma" value="0.026" constant="true"/>
+      <parameter id="I" name="I" value="0.9" constant="true"/>
+      <parameter id="k_A_D" name="k_A_D" value="1" constant="true"/>
+      <parameter id="k_B" name="k_B" value="0.012" constant="true"/>
+      <parameter id="K_d" name="K_d" value="1e-05" constant="true"/>
+      <parameter id="k_D" name="k_D" value="0.001" constant="true"/>
+      <parameter id="k_D_A" name="k_D_A" value="1" constant="true"/>
+      <parameter id="k_E" name="k_E" value="0.0005" constant="true"/>
+      <parameter id="k_M" name="k_M" value="0.022" constant="true"/>
+      <parameter id="K_s" name="K_s" value="0.8" constant="true"/>
+      <parameter id="m1" name="m1" value="1.5" constant="true"/>
+      <parameter id="m2" name="m2" value="2.5" constant="true"/>
+      <parameter id="n" name="n" value="0.43" constant="true"/>
+      <parameter id="nu" name="nu" value="6" constant="true"/>
+      <parameter id="Psi_A_D" name="Psi_A_D" value="0.4" constant="true"/>
+      <parameter id="Psi_sat" name="Psi_sat" value="-0.002" constant="true"/>
+      <parameter id="rho_b" name="rho_b" value="1200000" constant="true"/>
+      <parameter id="s" name="s" value="0.6" constant="true"/>
+      <parameter id="s_th" name="s_th" value="0.18" constant="true"/>
+      <parameter id="w" name="w" value="4" constant="true"/>
+      <parameter id="Z_r" name="Z_r" value="0.4" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="R_1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__4" stoichiometry="1" constant="true"/>
+          <speciesReference species="x__5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_D_A </ci>
+              <ci> x__4 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <times/>
+                  <cn> -0.25 </cn>
+                  <ci> Psi_A_D </ci>
+                </apply>
+                <ci> w </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <ci> gamma </ci>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <times/>
+                      <cn> -0.25 </cn>
+                      <ci> Psi_A_D </ci>
+                    </apply>
+                    <ci> w </ci>
+                  </apply>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <power/>
+                        <ci> s </ci>
+                        <apply>
+                          <times/>
+                          <cn> -1 </cn>
+                          <ci> b </ci>
+                        </apply>
+                      </apply>
+                      <cn> -1 </cn>
+                      <ci> Psi_sat </ci>
+                    </apply>
+                    <ci> w </ci>
+                  </apply>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__3" stoichiometry="1" constant="true"/>
+          <speciesReference species="x__5" stoichiometry="0.1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> D_D_0 </ci>
+              <ci> nu </ci>
+              <ci> x__3 </ci>
+              <apply>
+                <power/>
+                <ci> delta </ci>
+                <cn> -2 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <ci> n </ci>
+                <ci> m1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <ci> gamma </ci>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <apply>
+                    <times/>
+                    <cn> -1 </cn>
+                    <ci> s_th </ci>
+                  </apply>
+                </apply>
+                <ci> m1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> rho_b </ci>
+                    <ci> K_d </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> n </ci>
+                    <ci> s </ci>
+                  </apply>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> s_th </ci>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn> -1 </cn>
+                        <ci> s_th </ci>
+                      </apply>
+                      <cn> -1 </cn>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> s </ci>
+                    <cn> -1 </cn>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn> -1 </cn>
+                        <ci> s_th </ci>
+                      </apply>
+                      <cn> -1 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> m2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__2" stoichiometry="1" constant="true"/>
+          <speciesReference species="x__5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> D_D_0 </ci>
+              <ci> e </ci>
+              <ci> nu </ci>
+              <ci> x__2 </ci>
+              <apply>
+                <power/>
+                <ci> delta </ci>
+                <cn> -2 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <ci> n </ci>
+                <ci> m1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <ci> gamma </ci>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <apply>
+                    <times/>
+                    <cn> -1 </cn>
+                    <ci> s_th </ci>
+                  </apply>
+                </apply>
+                <ci> m1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> rho_b </ci>
+                    <ci> K_d </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> n </ci>
+                    <ci> s </ci>
+                  </apply>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> s_th </ci>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn> -1 </cn>
+                        <ci> s_th </ci>
+                      </apply>
+                      <cn> -1 </cn>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> s </ci>
+                    <cn> -1 </cn>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn> -1 </cn>
+                        <ci> s_th </ci>
+                      </apply>
+                      <cn> -1 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> m2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_M </ci>
+              <ci> x__5 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <ci> gamma </ci>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_5" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_B </ci>
+              <ci> x__5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_6" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_A_D </ci>
+              <ci> x__5 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <power/>
+                    <ci> s </ci>
+                    <apply>
+                      <times/>
+                      <cn> -1 </cn>
+                      <ci> b </ci>
+                    </apply>
+                  </apply>
+                  <cn> -1 </cn>
+                  <ci> Psi_sat </ci>
+                </apply>
+                <ci> w </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <times/>
+                      <cn> -1 </cn>
+                      <ci> Psi_A_D </ci>
+                    </apply>
+                    <ci> w </ci>
+                  </apply>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <power/>
+                        <ci> s </ci>
+                        <apply>
+                          <times/>
+                          <cn> -1 </cn>
+                          <ci> b </ci>
+                        </apply>
+                      </apply>
+                      <cn> -1 </cn>
+                      <ci> Psi_sat </ci>
+                    </apply>
+                    <ci> w </ci>
+                  </apply>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_7" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__5" stoichiometry="0.1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> C_E_0 </ci>
+              <ci> D_D_0 </ci>
+              <ci> nu </ci>
+              <apply>
+                <power/>
+                <ci> delta </ci>
+                <cn> -2 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <ci> n </ci>
+                <ci> m1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <ci> gamma </ci>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <apply>
+                    <times/>
+                    <cn> -1 </cn>
+                    <ci> s_th </ci>
+                  </apply>
+                </apply>
+                <ci> m1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> rho_b </ci>
+                    <ci> K_d </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> n </ci>
+                    <ci> s </ci>
+                  </apply>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> s_th </ci>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn> -1 </cn>
+                        <ci> s_th </ci>
+                      </apply>
+                      <cn> -1 </cn>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> s </ci>
+                    <cn> -1 </cn>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn> -1 </cn>
+                        <ci> s_th </ci>
+                      </apply>
+                      <cn> -1 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> m2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_8" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_D_A </ci>
+              <ci> x__4 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <times/>
+                  <cn> -0.25 </cn>
+                  <ci> Psi_A_D </ci>
+                </apply>
+                <ci> w </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <times/>
+                      <cn> -0.25 </cn>
+                      <ci> Psi_A_D </ci>
+                    </apply>
+                    <ci> w </ci>
+                  </apply>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <power/>
+                        <ci> s </ci>
+                        <apply>
+                          <times/>
+                          <cn> -1 </cn>
+                          <ci> b </ci>
+                        </apply>
+                      </apply>
+                      <cn> -1 </cn>
+                      <ci> Psi_sat </ci>
+                    </apply>
+                    <ci> w </ci>
+                  </apply>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_9" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__4" stoichiometry="0.1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__2" stoichiometry="0.1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_B </ci>
+              <ci> x__4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_10" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="x__3" stoichiometry="0.1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> C_E_0 </ci>
+              <ci> D_D_0 </ci>
+              <ci> nu </ci>
+              <apply>
+                <power/>
+                <ci> delta </ci>
+                <cn> -2 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <ci> n </ci>
+                <ci> m1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <apply>
+                    <times/>
+                    <cn> -1 </cn>
+                    <ci> s_th </ci>
+                  </apply>
+                </apply>
+                <ci> m1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> rho_b </ci>
+                    <ci> K_d </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> n </ci>
+                    <ci> s </ci>
+                  </apply>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> s_th </ci>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn> -1 </cn>
+                        <ci> s_th </ci>
+                      </apply>
+                      <cn> -1 </cn>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> s </ci>
+                    <cn> -1 </cn>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn> -1 </cn>
+                        <ci> s_th </ci>
+                      </apply>
+                      <cn> -1 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> m2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_11" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__3" stoichiometry="0.1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> D_D_0 </ci>
+              <ci> nu </ci>
+              <ci> x__3 </ci>
+              <apply>
+                <power/>
+                <ci> delta </ci>
+                <cn> -2 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <ci> n </ci>
+                <ci> m1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <apply>
+                    <times/>
+                    <cn> -1 </cn>
+                    <ci> s_th </ci>
+                  </apply>
+                </apply>
+                <ci> m1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> rho_b </ci>
+                    <ci> K_d </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> n </ci>
+                    <ci> s </ci>
+                  </apply>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> s_th </ci>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn> -1 </cn>
+                        <ci> s_th </ci>
+                      </apply>
+                      <cn> -1 </cn>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> s </ci>
+                    <cn> -1 </cn>
+                    <apply>
+                      <power/>
+                      <apply>
+                        <plus/>
+                        <cn> -1 </cn>
+                        <ci> s_th </ci>
+                      </apply>
+                      <cn> -1 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> m2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_12" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> K_s </ci>
+              <ci> x__3 </ci>
+              <apply>
+                <power/>
+                <ci> Z_r </ci>
+                <cn> -1 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <ci> s </ci>
+                <apply>
+                  <plus/>
+                  <cn> 3 </cn>
+                  <apply>
+                    <times/>
+                    <cn> 2 </cn>
+                    <ci> b </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <ci> rho_b </ci>
+                    <ci> K_d </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> n </ci>
+                    <ci> s </ci>
+                  </apply>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_13" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_E </ci>
+              <ci> x__3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_14" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__2" stoichiometry="1" constant="true"/>
+          <speciesReference species="x__4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> gamma </ci>
+              <ci> k_D_A </ci>
+              <ci> x__4 </ci>
+              <apply>
+                <power/>
+                <apply>
+                  <times/>
+                  <cn> -0.25 </cn>
+                  <ci> Psi_A_D </ci>
+                </apply>
+                <ci> w </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <times/>
+                      <cn> -0.25 </cn>
+                      <ci> Psi_A_D </ci>
+                    </apply>
+                    <ci> w </ci>
+                  </apply>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <power/>
+                        <ci> s </ci>
+                        <apply>
+                          <times/>
+                          <cn> -1 </cn>
+                          <ci> b </ci>
+                        </apply>
+                      </apply>
+                      <cn> -1 </cn>
+                      <ci> Psi_sat </ci>
+                    </apply>
+                    <ci> w </ci>
+                  </apply>
+                </apply>
+                <cn> -1 </cn>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_15" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__2" stoichiometry="0.1" constant="true"/>
+          <speciesReference species="x__4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> gamma </ci>
+              <ci> k_B </ci>
+              <ci> x__4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_16" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__5" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__2" stoichiometry="1" constant="true"/>
+          <speciesReference species="x__5" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> gamma </ci>
+              <ci> k_B </ci>
+              <ci> x__5 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_17" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__1" stoichiometry="1" constant="true"/>
+          <speciesReference species="x__3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="x__2" stoichiometry="1" constant="true"/>
+          <speciesReference species="x__3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_D </ci>
+              <ci> x__1 </ci>
+              <ci> x__3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_18" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="x__2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> D_D_0 </ci>
+                <ci> nu </ci>
+                <ci> x__2 </ci>
+                <apply>
+                  <power/>
+                  <ci> delta </ci>
+                  <cn> -2 </cn>
+                </apply>
+                <apply>
+                  <power/>
+                  <ci> n </ci>
+                  <ci> m1 </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <times/>
+                      <cn> -1 </cn>
+                      <ci> s_th </ci>
+                    </apply>
+                  </apply>
+                  <ci> m1 </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> rho_b </ci>
+                      <ci> K_d </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> n </ci>
+                      <ci> s </ci>
+                    </apply>
+                  </apply>
+                  <cn> -1 </cn>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> s_th </ci>
+                      <apply>
+                        <power/>
+                        <apply>
+                          <plus/>
+                          <cn> -1 </cn>
+                          <ci> s_th </ci>
+                        </apply>
+                        <cn> -1 </cn>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> s </ci>
+                      <cn> -1 </cn>
+                      <apply>
+                        <power/>
+                        <apply>
+                          <plus/>
+                          <cn> -1 </cn>
+                          <ci> s_th </ci>
+                        </apply>
+                        <cn> -1 </cn>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <ci> m2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> K_s </ci>
+                <ci> x__2 </ci>
+                <apply>
+                  <power/>
+                  <ci> Z_r </ci>
+                  <cn> -1 </cn>
+                </apply>
+                <apply>
+                  <power/>
+                  <ci> s </ci>
+                  <apply>
+                    <plus/>
+                    <cn> 3 </cn>
+                    <apply>
+                      <times/>
+                      <cn> 2 </cn>
+                      <ci> b </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> rho_b </ci>
+                      <ci> K_d </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> n </ci>
+                      <ci> s </ci>
+                    </apply>
+                  </apply>
+                  <cn> -1 </cn>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="R_19" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="x__1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <ci> I </ci>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
