@@ -4,6 +4,6 @@ model_list = [
               ('Mend', 19),
               ('Osmos', 24),
               ('PECCAT', 59),
-#              ('PECCATPCA', 12)
+              ('PECCATPCA', 59)
 
              ]
