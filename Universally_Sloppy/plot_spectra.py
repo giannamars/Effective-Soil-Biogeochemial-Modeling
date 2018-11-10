@@ -55,13 +55,13 @@ e = scipy.real(e)
 l = Plotting.plot_eigval_spectrum(e/max(e), offset=0.15+5, ax=ax, widths=0.7, lw=1.0)
 
 
-for ii in range(1, model_ii+1):
+for ii in range(1, model_ii+2):
     ax.plot([ii, ii], [1e-24, 2], '-', lw=0.5, color='black')
 
 ax.set_ylim(1e-24, 2)
 
 # Add labels
-ax.set_xticks(0.5 + scipy.arange(model_ii+1))
+ax.set_xticks(0.5 + scipy.arange(model_ii+2))
 import string
 xlabels = ['%s' % tup for tup in string.ascii_lowercase[:model_ii+1]]
 ax.set_xticklabels(xlabels, fontsize=10, verticalalignment='bottom', rotation=0, horizontalalignment='center')
@@ -72,7 +72,7 @@ for l in ax.get_xticklabels():
 for l in ax.get_xticklines():
     l.set_visible(False)
 
-ax.set_xlim(0, model_ii+1)
+ax.set_xlim(0, model_ii+2)
 
 ax.set_ylabel('Normalized Hessian eigenvalues')
 
