@@ -1,1 +1,3 @@
+SloppyCell -1.1.0
 
+git clone https://git.code.sf.net/p/sloppycell/git sloppycell-git
