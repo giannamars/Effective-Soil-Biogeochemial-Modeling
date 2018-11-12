@@ -109,7 +109,7 @@ Utility.save(popt, 'popt00.model.bpkl')
 #ens_data, costs, ratio = Ensembles.ensemble_log_params(m, popt, jtj, steps=1000000, recalc_hess_alg = True)
 #
 #ens_data = np.array(ens_data)
-#Utility.save(ens_data, 'model0.ens_data_jac.bpkl')
+#Utility.save(ens_data, 'model0.ens_data_mio.bpkl')
 #costs = np.array(costs)
 #Utility.save(costs, 'model0.costs_jac.bpkl')
 
