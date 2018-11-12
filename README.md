@@ -7,4 +7,4 @@ Supplementary Material for "Equifinality, sloppiness, and emergent structures of
 
 * for *Fig.4* run PlotSpectrum.py in the respective subfolders Functional_Gene_Data, Bulk_Data and Input_Output_Data. In order to check every iteration in the model reduction, run modelN_fit.py and modelN_reduce.py in the corresponding folder ModelN
 
-* for Fig. 5 run Performance/plot_calibrations.py. For model predictions, message me for the data files or uncomment lines in Functional_Gene_Data/Model0/model0_fit.py and Functional_Gene_Data/Model32/model32_fit.py to run the MCMC optimization (approx. 2 days)
+* for Fig. 5 run Performance/plot_calibrations.py. For model predictions, message me for the data files or uncomment lines in Functional_Gene_Data(MCPA_Data)/Model0/model0_fit.py and Functional_Gene_Data(MCPA_Data)/Model32/model32_fit.py to run the MCMC optimization (approx. 2 days)
