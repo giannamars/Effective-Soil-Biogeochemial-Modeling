@@ -94,3 +94,5 @@ print(len(popt))
 print 'Optimized Cost:', m.cost(popt)
 
 Utility.save(popt, 'popt32.model.bpkl')
+
+
