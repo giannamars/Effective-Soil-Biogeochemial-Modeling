@@ -93,6 +93,24 @@ print(popt)
 print(len(popt))
 print 'Optimized Cost:', m.cost(popt)
 
-Utility.save(popt, 'popt32.model.bpkl')
+
+## Ensemble fit
+#print('Calculating Hessian')
+#j = m.jacobian_log_params_sens(np.log(popt))
+#jtj = np.dot(np.transpose(j),j)
+#np.savetxt('hessian32.dat', jtj)
+#e,v = Utility.eig(jtj)
+#e = scipy.real(e)
+#print('Generating ensemble')
+#ens_data, costs, ratio = Ensembles.ensemble_log_params(m, popt, jtj, steps=100000)
+#
+#ens_data = np.array(ens_data)
+#Utility.save(popt, 'popt32.model.bpkl')
+#costs = np.array(costs)
+#Utility.save(costs, 'model32.costs_jac.bpkl')
 
 
+# We can look at the autocorrelation function of our costs to check efficiency
+#Plotting.figure(1)
+#ac = Ensembles.autocorrelation(costs)
+#Plotting.plot(ac)
