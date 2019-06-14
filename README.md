@@ -10,3 +10,5 @@ Supplementary Material for "Equifinality, sloppiness, and emergent structures of
 * for Fig. 5 run Performance/plot_calibrations.py. For model predictions, message me for the data files or uncomment lines in Functional_Gene_Data(MCPA_Data)/Model0/model0_fit.py and Functional_Gene_Data(MCPA_Data)/Model32/model32_fit.py to run the MCMC optimization (approx. 2 days)
 
 * for Fig. 6, the MATLAB R2017a Toolbox SAFE R1.1 is needed for Global Sensitivity Analysis
+
+* the R code for identifiability analysis of the minimal soil C model and corresponding MBAM reduction is in folder Universally_Sloppy/German
